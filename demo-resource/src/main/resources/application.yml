@@ -1,0 +1,16 @@
+# Resource Server
+debug: true
+spring:
+  application:
+    name: resource-server
+
+server:
+  port: 8082
+
+security:
+  basic:
+    enabled: false
+    realm: Demo
+  oauth2:
+    resource:
+      user-info-uri: http://localhost:8084/demo-auth/user

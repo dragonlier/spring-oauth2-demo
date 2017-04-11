@@ -1,0 +1,40 @@
+# UI Server
+debug: true
+spring:
+  application:
+    name: ui-server
+
+server:
+  port: 8081
+
+security:
+  basic:
+    enabled: false
+    realm: Demo
+#  user:
+#    name: lhj
+#    password: 123
+
+  oauth2:
+    client:
+      access-token-uri: http://localhost:8084/demo-auth/oauth/token
+      user-authorization-uri: http://localhost:8084/demo-auth/oauth/authorize
+      client-id: acme
+      client-secret: acme123
+      token-name: token-name
+      auto-approve-scopes: '.*'
+    resource:
+      user-info-uri: http://localhost:8084/demo-auth/user
+
+zuul: 
+  routes: 
+    resource: 
+      path: /resource/**
+      url: http://localhost:8082/resource
+#    user: 
+#      path: /user/**
+#      url: http://localhost:8084/demo-auth/user
+    check: 
+      path: /check/**
+      url: http://localhost:8084/demo-auth/check
+

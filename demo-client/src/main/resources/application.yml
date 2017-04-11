@@ -1,0 +1,7 @@
+security:
+  basic:
+    enabled: false
+
+# Client
+server:
+  port: 8083

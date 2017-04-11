@@ -1,0 +1,27 @@
+# Authentication Server
+debug: true
+spring:
+  application:
+    name: auth-server
+
+server:
+  port: 8084
+  context-path: /demo-auth
+security:
+  basic:
+    enabled: true
+    realm: Demo
+  user:
+    name: lhj
+    password: 123456
+  
+  oauth2:
+    client:
+      client-id: acme
+      client-secret: acme123
+      authorized-grant-types: authorization_code,refresh_token,password,client_credentials
+      scope: openid,read,write
+      auto-approve-scopes: '.*'
+      access-token-validity-seconds: 30
+    authorization:
+      realm: OAuth2
